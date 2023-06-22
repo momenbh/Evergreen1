@@ -9,10 +9,7 @@
           <a class="footer_brand pull-left">
             <img src="{{ url('/uploads/settings/' . $settings->logo_image) }}" alt="logo_img">
             <h5>Corporate Office</h5>
-            <span class="address">Unit-6A, Level-6,<br>
-            Rupayan Shopping Square,<br>
-            Plot # 2, Sayem Sobhan Anvir Road,<br>
-            Bashundhara R/A, Dhaka-1229.</span>
+            <span class="address">{{$contact->address}}</span>
             <div class="brand-info">
               <div class="brand-name"></div>
               <div class="brand-text"></div>

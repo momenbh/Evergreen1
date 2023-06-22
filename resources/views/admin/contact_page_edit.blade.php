@@ -24,40 +24,40 @@
                 <div class="form-row mb-4">
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">Address</label>
-                        <input type="text" class="form-control" id="address" placeholder="Address" name="address">
+                        <input type="text" class="form-control" id="address" name="address" value="{{$contact->address}}">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                        <input type="email" class="form-control" id="email" name="email" value={{$contact->email}}>
                     </div>
                 </div>
 
                 <div class="form-row mb-4">
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">Website</label>
-                        <input type="text" class="form-control" id="text" placeholder="Website" name="website">
+                        <input type="text" class="form-control" id="text" name="website" value={{$contact->website}}>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputEmail4">Number</label>
-                        <input type="number" class="form-control" id="number" placeholder="Number" name="number">
+                        <label for="number">Number</label>
+                        <input type="number" class="form-control" id="number" name="number" value={{$contact->number}}>
                     </div>
                 </div>
 
                 <div class="form-group mb-4">
                     <div class="form-group col-md-6">
-                        <label for="description">Map Embedded code</label>
-                        <textarea  type="textarea" class="form-control" id="description" placeholder="Description" name="map_embedded"></textarea>
+                        <label for="map_embedded">Map Embedded code</label>
+                        <textarea  type="textarea" class="form-control" id="map_embedded"  name="map_embedded">{{$contact->map_embedded}}</textarea>
                     </div>
                 </div>
 
                 <div class="form-row mb-4">
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">Work Hour</label>
-                        <input type="text" class="form-control" id="work_hour" placeholder="Website" name="work_hour">
+                        <input type="text" class="form-control" id="work_hour" name="work_hour" value="{{$contact->work_hour}}">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="email">Contact Form Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email" name="contact_email">
+                        <input type="email" class="form-control" id="email" name="contact_email" value="{{$contact->contact_email}}">
                     </div>
                 </div>
 
@@ -76,7 +76,7 @@
                                 <div class="custom-file-container" data-upload-id="myFirstImage">
                                     <label>Clear Image <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
                                     <label class="custom-file-container__custom-file" >
-                                        <input type="file" class="custom-file-container__custom-file__custom-file-input"  name="banner_image"accept="image/*">
+                                        <input type="file" name="banner_image" class="custom-file-container__custom-file__custom-file-input"  accept="image/*" value={{$contact->banner_image}}>
                                         <input type="hidden"  value="10485760" />
                                         <span class="custom-file-container__custom-file__custom-file-control"></span>
                                     </label>

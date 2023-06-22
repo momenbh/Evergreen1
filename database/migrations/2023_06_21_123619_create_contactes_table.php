@@ -22,7 +22,7 @@ class CreateContactesTable extends Migration
             $table->string('map_embedded');
             $table->text('work_hour');
             $table->string('contact_email');
-            $table->string('banner_image')->nullable();
+            $table->string('banner_image')->nullable(); 
             $table->timestamps();
         });
     }

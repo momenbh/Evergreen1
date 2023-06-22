@@ -46,7 +46,7 @@
             <a href="{{route('list.news')}}">News</a>
           </li>
           <li>
-            <a href="contact.php">Contact</a>
+            <a href="{{route('view.contact')}}">Contact</a>
           </li>
         </ul>
         <div class="menu-footer right-boxed">

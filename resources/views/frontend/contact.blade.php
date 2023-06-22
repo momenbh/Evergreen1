@@ -31,21 +31,21 @@
               <div class="col-md-9">
                 <div class="row-contact row">
                   <div class="col-contact col-lg-6">
-                    <p class="contact-address"><strong><i class="fa fa-map-marker" style="padding-right: 10px;font-size: 22px;"></i>Unit-6A, Level-6, Rupayan Shopping Square, Plot # 2, Sayem Sobhan Anvir Road, Bashundhara R/A, Dhaka-1229.</strong></p>
-                    <p class="contact-address"><strong><i class="fa fa-envelope" style="padding-right: 10px;font-size: 22px;"></i> info@evergreen92property.com</strong></p>
-                    <p class="contact-address"><strong><i class="fa fa-globe" style="padding-right: 10px;font-size: 22px;"></i> http://www.evergreen92.club/</strong></p>
+                    <p class="contact-address"><strong><i class="fa fa-map-marker" style="padding-right: 10px;font-size: 22px;"></i>{{$contact->address}}</strong></p>
+                    <p class="contact-address"><strong><i class="fa fa-envelope" style="padding-right: 10px;font-size: 22px;"></i> {{$contact->email}}</strong></p>
+                    <p class="contact-address"><strong><i class="fa fa-globe" style="padding-right: 10px;font-size: 22px;"></i>{{$contact->website}}</strong></p>
                   </div>
                   <div class="col-contact col-lg-6">
                     <p class="contact-top"><strong class="text-muted">Call directly:</strong></p>
-                    <p class="phone-lg text-dark"><a href="tel:+8801730588098"><i class="fa fa-phone" style="padding-right: 10px;font-size: 30px;"></i><b>+8801730 58 80 98</b></a></p>
+                    <p class="phone-lg text-dark"><a href="tel:+8801730588098"><i class="fa fa-phone" style="padding-right: 10px;font-size: 30px;"></i><b>{{$contact->number}}</b></a></p>
                     <p class="text-muted"><strong class="text-dark">Work Hours</strong><br>
-                     Saturday - Thursday : 10am - 07pm</p>
+                     {{$contact->work_hour}}</p>
                     <div class="text-muted"><strong class="text-dark">Follow us</strong><br>
                       <div class="contact-social social-list">
-                        <a target="_blank" href="https://www.facebook.com/Evergreen92Propertybd/" class="icon ion-social-facebook"></a>
-                        <a target="_blank" href="https://www.instagram.com/evergreenvillage92/" class="icon ion-social-instagram"></a>
-                        <a href="https://www.youtube.com/channel/UCIYMEw18Ytt4kPXA9YRRcFg" class="icon ion-social-youtube"></a>
-                        <a target="_blank" href="https://www.linkedin.com/in/evergreen-property-565a70274/" class="icon ion-social-linkedin"></a>
+                        <a target="_blank" href="{{$settings->facebook_link}}" class="icon ion-social-facebook"></a>
+                        <a target="_blank" href="{{$settings->instagram_link}}" class="icon ion-social-instagram"></a>
+                        <a href="{{$settings->youtube_link}}" class="icon ion-social-youtube"></a>
+                        <a target="_blank" href="{{$settings->linked_in_link}}" class="icon ion-social-linkedin"></a>
                       </div>
                     </div>
                   </div>

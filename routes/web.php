@@ -97,7 +97,7 @@ Route::post('/project/update/{id}',[Project::class,'update'])->name('update.proj
 //setting
 Route::get('/settings',[SettingController::class,'settings'])->name('admin.settings');
 Route::post('/settings/store',[SettingController::class,'store'])->name('store.settings');
-Route::post('/settings/update/{id}',[SettingController::class,'update'])->name('update.settings');
+// Route::post('/settings/update/{id}',[SettingController::class,'update'])->name('update.settings');
 
 //client Reviews
 Route::get('/clientreviews',[Review::class,'reviews'])->name('client.reviews');
@@ -107,6 +107,7 @@ Route::post('/client/reviews/store',[Review::class,'store'])->name('reviews.stor
 
 //contact
 Route::get('/contact',[Contact::class,'contact'])->name('contact.page');
+Route::get('/contact/view',[Contact::class,'view'])->name('view.contact');
 Route::post('/contact/store',[Contact::class,'store'])->name('store.contact');
 
 

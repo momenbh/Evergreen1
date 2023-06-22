@@ -10,7 +10,8 @@ class Contact extends Controller
 {
     public function contact()
     {
-        return view('admin.contact_page_edit');
+        $contact=Pagecontact::first();
+        return view('admin.contact_page_edit',compact('contact'));
     }
     public function store(Request $request){
         // dd($request->all());
@@ -22,8 +23,8 @@ class Contact extends Controller
         $contact->map_embedded = $request->map_embedded;
         $contact->work_hour = $request->work_hour;
         $contact->contact_email = $request->contact_email;
-
         $fileName = null;
+
         if ($request->hasFile('banner_image')) {
             // generate name
             $fileName = date('Ymdhmi') . '.' . $request->file('banner_image')->getClientOriginalExtension();
@@ -34,9 +35,28 @@ class Contact extends Controller
 
         //update
 
-        $contact->save();
+        // $contact->save();
+        
+
+        Pagecontact::where('id',9)->update([
+            // dd($request->all()),
+            'address'=>$request->address,
+            'email'=>$request->email,
+            'website'=>$request->website,
+            'number'=>$request->number,
+            'map_embedded'=>$request->map_embedded,
+            'work_hour'=>$request->work_hour,
+            'contact_email'=>$request->contact_email,
+            'banner_image'=>$fileName,
+
+        ]);
 
         return redirect()->back();
+    }
+
+    public function view(){
+        
+        return view('frontend.contact');
     }
 
 }
