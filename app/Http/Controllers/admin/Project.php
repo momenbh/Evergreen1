@@ -8,6 +8,7 @@ use App\Models\Image;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
 class Project extends Controller
 {
     public function addproject()
@@ -16,35 +17,8 @@ class Project extends Controller
         return view('admin.add_projects');
     }
     public function store(Request $request)
+
     {
-
-        // $request->validate([
-        //       'project_image.*' => 'required|mimes:png,gif,jpg,jpeg,bim|max:2048',
-        // ]);
-        // dd($request->all());
-
-
-        // $fileName=null;
-        // if($request->hasFile('thumbnail_image'))
-        // {
-        //     // generate name
-        //     $fileName=date('Ymdhmi').'.'.$request->file('thumbnail_image')->getClientOriginalExtension();
-        //     $request->file('thumbnail_image')->storeAs('/uploads/project',$fileName);
-        // }
-
-
-
-
-        // // dd($request->all());
-        // Table::create([
-
-        //     'project_name'=>$request->project_name,
-        //     'description'=>$request->description,
-        //     'video_url'=>$request->video_url,
-        //     'thumbnail_image'=>$fileName,
-        //     'project_image'=>$fileName,
-        // ]);
-
         $project = new Table();
 
         $project->project_name = $request->project_name;
@@ -58,22 +32,24 @@ class Project extends Controller
         }
 
         $project->thumbnail_image = $fileName;
-        // $project->project_image = $fileName;
+
         $project->save();
 
 
         //multiple image
+        
         if ($request->project_image) {
             foreach ($request->project_image as $img) {
                 $image = new Image();
                 $image->project_id = $project->id;
-                $fileName = time() . '.' . $img->getClientOriginalExtension();
+                $fileName = date('Ymdhmi') . '.' . $img->getClientOriginalExtension();
                 $img->move(public_path('/uploads/projects'), $fileName);
                 $image->filename = $fileName;
                 $image->save();
+                
             }
         }
-
+       
         // id,project_id, filename
 
         return redirect()->route('view.project');
@@ -124,3 +100,4 @@ class Project extends Controller
         return redirect()->route('view.project');
     }
 }
+

@@ -90,9 +90,9 @@
                                 class="custom-file-container__image-clear"
                                 title="Clear Image">x</a></label>
                         <label class="custom-file-container__custom-file">
-                            <input type="file" 
-                                class="custom-file-container__custom-file__custom-file-input" name="project_image[]"
-                                multiple>
+                            <input type="file" name="project_image[]"
+                            class="custom-file-container__custom-file__custom-file-input"
+                            accept="image/*" multiple>
                             <input type="hidden"
                                 value="10485760" />
                             <span

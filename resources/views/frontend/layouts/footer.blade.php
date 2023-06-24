@@ -55,7 +55,7 @@
       <div class="container">
         <div class="row copyrite">
           <div class="col-md-6">
-              <p>© 2023 Evergreen’92. All Rights Reserved.</p>
+              <p>{{$settings->copyrite_text}}</p>
           </div>
 
           <div class="col-md-6">
