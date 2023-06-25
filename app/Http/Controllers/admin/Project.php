@@ -19,6 +19,8 @@ class Project extends Controller
     public function store(Request $request)
 
     {
+       
+
         $project = new Table();
 
         $project->project_name = $request->project_name;
@@ -40,16 +42,17 @@ class Project extends Controller
         
         if ($request->project_image) {
             foreach ($request->project_image as $img) {
+           
                 $image = new Image();
                 $image->project_id = $project->id;
-                $fileName = date('Ymdhmi') . '.' . $img->getClientOriginalExtension();
+                $fileName = date('Ymdhmi') . uniqid(). '.' . $img->getClientOriginalExtension();
                 $img->move(public_path('/uploads/projects'), $fileName);
                 $image->filename = $fileName;
                 $image->save();
                 
             }
         }
-       
+
         // id,project_id, filename
 
         return redirect()->route('view.project');
