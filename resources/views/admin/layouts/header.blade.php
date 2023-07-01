@@ -317,7 +317,7 @@
                                 <a href="{{ route('add.project') }}"> Add </a>
                             </li>
                             <li>
-                                <a href="#"> Manage </a>
+                                <a href="{{route('view.project')}}"> Manage </a>
                             </li>
 
                         </ul>

@@ -82,7 +82,7 @@
                             <label class="custom-file-container__custom-file">
                                 <input type="file"  name="project_image[]"
                                     class="custom-file-container__custom-file__custom-file-input"
-                                    multiple>
+                                    multiple value="{{$table->thumbnail_image}}">
                                 <input type="hidden"
                                     value="10485760" />
                                 <span

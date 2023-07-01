@@ -86,7 +86,8 @@ Route::get('/project/view',[Project::class,'view'])->name('view.project');
 Route::get('/project/add',[Project::class,'addproject'])->name('add.project');
 Route::post('/project/store',[Project::class,'store'])->name('store.project');
 
-//admin delete /edit
+// delete/update
+
 Route::get('/project/delete/{id}',[Project::class,'delete'])->name('deete.project');
 Route::get('/project/edit/{id}',[Project::class,'edit'])->name('edit.project');
 Route::post('/project/update/{id}',[Project::class,'update'])->name('update.project');
@@ -97,12 +98,13 @@ Route::post('/project/update/{id}',[Project::class,'update'])->name('update.proj
 //setting
 Route::get('/settings',[SettingController::class,'settings'])->name('admin.settings');
 Route::post('/settings/store',[SettingController::class,'store'])->name('store.settings');
-// Route::post('/settings/update/{id}',[SettingController::class,'update'])->name('update.settings');
+Route::post('/settings/update/{id}',[SettingController::class,'update'])->name('update.settings');
 
 //client Reviews
 Route::get('/clientreviews',[Review::class,'reviews'])->name('client.reviews');
 Route::get('/client/manage',[Review::class,'manage'])->name('manage.client');
 Route::post('/client/reviews/store',[Review::class,'store'])->name('reviews.store');
+Route::get('/client/reviews/delete{id}',[Review::class,'delete'])->name('delete.reviews');
 
 
 //contact

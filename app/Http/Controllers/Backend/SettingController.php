@@ -32,10 +32,11 @@ class SettingController extends Controller
             //  dd($request->all());
         $settings->logo_image = $fileName;
         
-
+             // $settings->save();
+             
         //update
 
-        // $settings->save();
+       
         Setting::where('id',2)->update([
             
             'site_title'=>$request->site_title,
