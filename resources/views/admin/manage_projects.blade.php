@@ -24,7 +24,10 @@
         <th>ID</th>
         <th>Project Name</th>
         <th>Description</th>
+        <th>VIDEO URL</th>
         <th>Thumbnail Images</th>
+        <th>Project Images</th>
+        
         <th class="text-center">Action</th>
     </tr>
 </thead>
@@ -34,8 +37,16 @@
             <td>{{ $key + 1 }}</td>
             <td>{{ $data->project_name }}</td>
             <td>{{ $data->description }}</td>
+            <td>{{ $data->video_url }}</td>
             <td>
                 <img width="100px" style="border-radius: 10px" src="{{url('/uploads/project/'.$data->thumbnail_image)}}" alt="thumbnail_image">
+            </td>
+            <td>
+                @foreach($images as $image)
+                <div>
+                    <img width="50px" style="border-radius: 10px" src="{{ url('/uploads/projects/' . $image->filename) }}" alt="project_image">
+                </div>
+                @endforeach
             </td>
             <td class="text-center">
 

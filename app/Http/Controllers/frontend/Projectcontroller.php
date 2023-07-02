@@ -20,7 +20,7 @@ class Projectcontroller extends Controller
 
         return redirect()->back();
     }
-    public function details($project_id){
+    public function  details($project_id){
         $table=Table::find($project_id);
         $images = Image::where('project_id', $project_id)->get();
 

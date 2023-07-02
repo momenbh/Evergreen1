@@ -29,7 +29,14 @@
         <div class="form-group mb-4">
             <div class="form-group col-md-6">
                 <label for="description">Description</label>
-                <textarea type="textarea" class="form-control" id="description" placeholder="Description" name="description">{{$table->description}}"</textarea>
+                <textarea type="textarea" class="form-control" id="description" placeholder="Description" name="description">{{$table->description}}</textarea>
+            </div>
+        </div>
+        <div class="form-row mb-4">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">VIDEO URL</label>
+                <input type="text" class="form-control" 
+                    placeholder="video url" name="video_url" value="{{$table->video_url}}">
             </div>
         </div>
     
@@ -82,7 +89,7 @@
                             <label class="custom-file-container__custom-file">
                                 <input type="file"  name="project_image[]"
                                     class="custom-file-container__custom-file__custom-file-input"
-                                    multiple value="{{$table->thumbnail_image}}">
+                                    multiple value="{{$table->project_image}}">
                                 <input type="hidden"
                                     value="10485760" />
                                 <span

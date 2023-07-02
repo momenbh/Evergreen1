@@ -7,7 +7,7 @@ use App\Models\Table;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Validation\Rules\Unique;
 
 class Project extends Controller
 {
@@ -26,7 +26,7 @@ class Project extends Controller
         $project->project_name = $request->project_name;
         $project->description = $request->description;
         $project->video_url = $request->video_url;
-
+         
         if ($request->hasFile('thumbnail_image')) {
             // generate name
             $fileName = date('Ymdhmi') . '.' . $request->file('thumbnail_image')->getClientOriginalExtension();
@@ -59,13 +59,15 @@ class Project extends Controller
     }
     public function view()
     {
-        $table = Table::orderby('id', 'desc')->paginate(5);
-        return view('admin.manage_projects', compact('table'));
+        $table = Table:: orderby('id', 'desc')->paginate(5);
+        $images = Image::all();
+        return view('admin.manage_projects', compact('table','images'));
     }
 
     public function delete($id)
     {
         Table::find($id)->delete();
+        Image::where('project_id',$id)->delete();
         return redirect()->back();
     }
     public function edit($id)
@@ -73,33 +75,51 @@ class Project extends Controller
         $table = Table::find($id);
         return view('admin.edit_projects', compact('table'));
     }
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
+
     {
         // dd($request->all());
-        $table = Table::find($id);
+        
+        $project = new Table();
+        
+        $fileName=$project->thumbnail_image;
 
-        $fileName = $table->thumbnail_image;
-        // var_dump($fileName);
-        if ($request->hasFile('thumbnail_image')); {
+        if ($request->hasFile('thumbnail_image')) {
+            // generate name
             $fileName = date('Ymdhmi') . '.' . $request->file('thumbnail_image')->getClientOriginalExtension();
             $request->file('thumbnail_image')->storeAs('/uploads/project', $fileName);
         }
-        //multipleimage
-        if ($request->project_image) {
-            foreach ($request->project_image as $image) {
-                $fileName = time() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('/uploads/projects'), $fileName);
-            }
-        }
-        $table->update([
+
+        $project->thumbnail_image = $fileName;
+
+        // $project->save();
+
+       
+        Table::where('id',$id)->update([
 
             'project_name' => $request->project_name,
             'description' => $request->description,
             'video_url' => $request->video_url,
             'thumbnail_image' => $fileName,
-            'project_image' => $fileName,
-
         ]);
+
+        if ($request->project_image) {
+            foreach ($request->project_image as $img) {
+           
+                $image = new Image();
+                $image->project_id = $project->id;
+                $fileName = date('Ymdhmi') . uniqid(). '.' . $img->getClientOriginalExtension();
+                $img->move(public_path('/uploads/projects'), $fileName);
+                $image->filename = $fileName;
+                // $image->save();
+                
+            }
+        }
+        Image::where('project_id',$id)->update([
+            
+               'filename'=>$fileName,
+        ]);
+        
         return redirect()->route('view.project');
     }
 }

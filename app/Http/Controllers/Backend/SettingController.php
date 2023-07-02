@@ -23,7 +23,7 @@ class SettingController extends Controller
         $settings->instagram_link = $request->instagram_link;
         $settings->youtube_link = $request->youtube_link;
         $settings->linked_in_link = $request->linked_in_link;
-           $fileName = null;
+        $fileName = null;
         if ($request->hasFile('logo_image')) {
             // generate name
             $fileName = date('Ymdhmi') . '.' . $request->file('logo_image')->getClientOriginalExtension();
